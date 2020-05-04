@@ -1,17 +1,26 @@
 package com.calculator;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
-
-
 /**
- * @author Ikhsan, Sobirin, dan Junaedi
- * 25 April 20120
- * membuat aplikasi berbasis operasi matematika sederhana
+ * @author Ikhsan, Sobirin, dan Junaedi 25 April 20120 membuat aplikasi berbasis
+ *         operasi matematika sederhana
  */
 public class CalculatorPhysics {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
+		// pembuatan objek baru concepToDB untuk memangil method/fungsi di kelas
+		// PhysicsConcepBL
+		PhysicsConcepBL concepToDB = new PhysicsConcepBL();
+		// fungsi di dalam kelas PhysicsConcepBL
+		concepToDB.selecetBuku();
+		concepToDB.insertBuku();
+		concepToDB.deleteBuku();
+		concepToDB.updateBuku();
+
+		// pembuatan objek baru physicscConcep untuk mengakses fungsi di dalam kelas
+		// PhysicscConcep
 		PhysicscConcep physicscConcep = new PhysicscConcep();
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Masukan nilai A");
@@ -33,8 +42,10 @@ public class CalculatorPhysics {
 			break;
 		case 3:
 			physicscConcep.kali(scanA, scanB);
+			break;
 		case 4:
 			physicscConcep.bagi(scanA, scanB);
+			break;
 		default:
 			break;
 		}
